@@ -1,0 +1,7 @@
+.card{
+    max-width: 15rem;
+    border: 1px solid salmon;
+    & img{
+        width: 100%;
+    }
+}

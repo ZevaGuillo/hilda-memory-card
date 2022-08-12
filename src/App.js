@@ -1,27 +1,26 @@
-import { useEffect, useState } from 'react';
 import Card from './components/Card';
 import './SCSS/App.scss';
 import shuffle from './utils/shuffle';
-import { characters } from './services/loadImages';
+import { characters, isAllClicked } from './services/loadImages';
 import { useGame } from './hooks/useGame';
 
 
 function App() {
 
-  const [deckOfCards, setDeckOfCards] = useState([]);
+  
   const {
     state,
     dispatch,
+    isWin,
+    isGameOver,
     handleSelectCard,
-    selectedCards
-  } = useGame();
+    deckOfCards,
+    setDeckOfCards
+  } = useGame(characters);
 
 
 
-  useEffect(()=>{
-    setDeckOfCards(shuffle(characters));
-    console.log(selectedCards)
-  },[selectedCards])
+  
 
   return (
     <div className="App">
@@ -33,14 +32,14 @@ function App() {
         <h1>Best score: {state.bestScore}</h1>
       </div>
       <button onClick={()=> {
-        setDeckOfCards(shuffle(characters))
+        setDeckOfCards(shuffle(characters, isAllClicked()));
         dispatch({type:"REFRESH"});
       } }>Refresh</button>
       <div>
         {
-          state.isWin ?
+          isWin ?
             <h1>wIN</h1>
-          :state.isGameOver?
+          :isGameOver?
             <h1>Game over</h1>
             :
             <h1>The game</h1>

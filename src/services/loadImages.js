@@ -18,19 +18,19 @@ const characters = [
         id: uuidv4(),
         name: "Hilda",
         img: hildaImg,
-        clicked: false,
+        clicked: true,
     },
     {
         id: uuidv4(),
         name: "Johanna",
         img: johannaImg,
-        clicked: false,
+        clicked: true,
     },
     {
         id: uuidv4(),
         name: "Frida",
         img: fridaImg,
-        clicked: false,
+        clicked: true,
     },
     {
         id: uuidv4(),
@@ -44,37 +44,56 @@ const characters = [
         img: alfurImg,
         clicked: false,
     },
-    // {
-    //     id: uuidv4(),
-    //     name: "Twig",
-    //     img: twigImg,
-    //     clicked: false,
-    // },
-    // {
-    //     id: uuidv4(),
-    //     name: "Woodman",
-    //     img: woodmanImg,
-    //     clicked: false,
-    // },
-    // {
-    //     id: uuidv4(),
-    //     name: "Kaisa",
-    //     img: kaisaImg,
-    //     clicked: false,
-    // },
-    // {
-    //     id: uuidv4(),
-    //     name: "Erik Alhberg",
-    //     img: ErikAlhbergImg,
-    //     clicked: false,
-    // },
-    // {
-    //     id: uuidv4(),
-    //     name: "Gerda Gustav",
-    //     img: gerdaImg,
-    //     clicked: false,
-    // }
+    {
+        id: uuidv4(),
+        name: "Twig",
+        img: twigImg,
+        clicked: false,
+    },
+    {
+        id: uuidv4(),
+        name: "Woodman",
+        img: woodmanImg,
+        clicked: false,
+    },
+    {
+        id: uuidv4(),
+        name: "Kaisa",
+        img: kaisaImg,
+        clicked: false,
+    },
+    {
+        id: uuidv4(),
+        name: "Erik Alhberg",
+        img: ErikAlhbergImg,
+        clicked: false,
+    },
+    {
+        id: uuidv4(),
+        name: "Gerda Gustav",
+        img: gerdaImg,
+        clicked: false,
+    }
 ]
 
+function resectCharactes(){
+    
+    characters.forEach(c => {
+        c.clicked = false; 
+    });
+    console.log('resetCharactes',characters);
+}
 
-export {characters}
+function isAllClicked(){
+    let allchicked = characters.filter(c => c.clicked===false);
+    console.log(characters.map(c => {
+        return{
+            click: c.clicked,
+            name: c.name 
+        }
+    }))
+
+    return (allchicked.length === 0)
+}
+
+export {characters, resectCharactes, isAllClicked}

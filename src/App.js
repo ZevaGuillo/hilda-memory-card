@@ -1,72 +1,55 @@
 import { useEffect, useState } from 'react';
 import Card from './components/Card';
 import './SCSS/App.scss';
+import shuffle from './utils/shuffle';
+import { characters } from './services/loadImages';
+import { useGame } from './hooks/useGame';
 
-const characters = require('./assets/data.json'); 
+
 function App() {
 
   const [deckOfCards, setDeckOfCards] = useState([]);
-  const [selectedCards, setSelectedCards] = useState([]);
-  const [score, setScore] = useState(0);
-  const [bestscore, setBestScore] = useState(0);
+  const {
+    state,
+    dispatch,
+    handleSelectCard,
+    selectedCards
+  } = useGame();
 
-  function validateBestscore (){
-    if(bestscore < score){
-      setBestScore(score);
-    }
-  }
 
-  function handleSelectCard(character){
-    if(!selectedCards.includes(character)){
-      setSelectedCards([
-        ...selectedCards,
-        character
-      ]);
-      setScore(score+1);
-    }else{
-      console.log('Game over');
-      setSelectedCards([]);
-      validateBestscore();
-      setScore(0);
-    }    
-  }
 
   useEffect(()=>{
-    console.log(selectedCards)
     setDeckOfCards(shuffle(characters));
+    console.log(selectedCards)
   },[selectedCards])
 
   return (
     <div className="App">
       {
-        deckOfCards.map( c => <Card character={c} key={c.name} handleSelectCard={handleSelectCard} /> )
+        deckOfCards.map( c => <Card character={c} key={c.id} handleSelectCard={handleSelectCard} /> )
       }
       <div>
-        <h1>score: {score}</h1>
-        <h1>Best score: {bestscore}</h1>
+        <h1>score: {state.score}</h1>
+        <h1>Best score: {state.bestScore}</h1>
       </div>
-      
+      <button onClick={()=> {
+        setDeckOfCards(shuffle(characters))
+        dispatch({type:"REFRESH"});
+      } }>Refresh</button>
+      <div>
+        {
+          state.isWin ?
+            <h1>wIN</h1>
+          :state.isGameOver?
+            <h1>Game over</h1>
+            :
+            <h1>The game</h1>
+        }
+        
+        
+      </div>
+
     </div>
   );
 }
-
-function shuffle(characters){
-  let newArr = [];
-
-  for(let i = 0; i < 3; i++){
-    let randomNumber;
-    let isInclude = false;
-
-    while(!isInclude){
-      randomNumber = Math.floor(Math.random() * characters.length);
-      if(!newArr.includes(characters[randomNumber])){
-        isInclude = true;
-      }
-    }
-
-    newArr.push(characters[randomNumber]);
-  }
-  return newArr;
-}
-
 export default App;

@@ -1,7 +1,6 @@
 import { useEffect, useReducer, useState } from "react";
-import { isAllClicked, resectCharactes } from "../services/loadImages";
+import { characters, isAllClicked, resectCharactes } from "../services/loadImages";
 import shuffle from "../utils/shuffle";
-
 const initialState = {
   score: 0,
   bestScore: 0,
@@ -28,7 +27,7 @@ const reducer = (state, action) => {
   }
 };
 
-const useGame = (characters) => {
+const useGame = () => {
   const [selectedCards, setSelectedCards] = useState([]);
   const [deckOfCards, setDeckOfCards] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialState);

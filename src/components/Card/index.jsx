@@ -1,7 +1,9 @@
+import { useContext } from 'react';
+import GameContext from '../../context/GameContext';
 import './Card.scss';
-function Card({character, handleSelectCard}) {
+function Card({character}) {
 
-  
+  const {handleSelectCard} = useContext(GameContext);
 
   return (
     <div className="card" onClick={()=>handleSelectCard(character)}>

@@ -1,53 +1,25 @@
-import Card from './components/Card';
-import './SCSS/App.scss';
-import shuffle from './utils/shuffle';
-import { characters, isAllClicked } from './services/loadImages';
-import { useGame } from './hooks/useGame';
-
+import "./SCSS/App.scss";
+import StartPage from "./pages/StartPage";
+import { useState } from "react";
+import GamePage from "./pages/GamePage";
+import { GameContextProvider } from "./context/GameContext";
 
 function App() {
+  const [isStarted, setIsStarted] = useState(false);
 
-  
-  const {
-    state,
-    dispatch,
-    isWin,
-    isGameOver,
-    handleSelectCard,
-    deckOfCards,
-    setDeckOfCards
-  } = useGame(characters);
-
-
-
-  
+  function handleStartGame() {
+    setIsStarted(true);
+  }
 
   return (
     <div className="App">
-      {
-        deckOfCards.map( c => <Card character={c} key={c.id} handleSelectCard={handleSelectCard} /> )
-      }
-      <div>
-        <h1>score: {state.score}</h1>
-        <h1>Best score: {state.bestScore}</h1>
-      </div>
-      <button onClick={()=> {
-        setDeckOfCards(shuffle(characters, isAllClicked()));
-        dispatch({type:"REFRESH"});
-      } }>Refresh</button>
-      <div>
-        {
-          isWin ?
-            <h1>wIN</h1>
-          :isGameOver?
-            <h1>Game over</h1>
-            :
-            <h1>The game</h1>
-        }
-        
-        
-      </div>
-
+      <GameContextProvider>
+        {!isStarted ? (
+          <StartPage handleStartGame={handleStartGame} />
+        ) : (
+          <GamePage />
+        )}
+      </GameContextProvider>
     </div>
   );
 }

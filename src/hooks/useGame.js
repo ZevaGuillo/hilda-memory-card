@@ -1,5 +1,5 @@
 import { useEffect, useReducer, useState } from "react";
-import { characters, isAllClicked, resectCharactes } from "../services/loadImages";
+import { characters, getCharactersDifficulty, isAllClicked, resectCharactes } from "../services/loadImages";
 import shuffle from "../utils/shuffle";
 const initialState = {
   score: 0,
@@ -33,10 +33,11 @@ const useGame = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [isWin, setIsWin] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [difficulty, setDifficulty] = useState('easy');
 
   useEffect(()=>{
-    setDeckOfCards(shuffle(characters, isAllClicked()));  
-  },[])
+    setDeckOfCards(shuffle(difficulty));
+  },[difficulty]);
 
   useEffect(()=>{
     dispatch({type:'RESTART'})
@@ -45,7 +46,8 @@ const useGame = () => {
   }, [isWin,isGameOver])
 
   useEffect(()=>{
-    if (state.score === characters.length) {
+    let array = getCharactersDifficulty(difficulty);
+    if (state.score === array.length) {
       setIsWin(true);
       setIsGameOver(false);
     }  
@@ -63,7 +65,7 @@ const useGame = () => {
       setIsWin(false);
       setSelectedCards([]);
     }
-    setDeckOfCards(shuffle(characters, isAllClicked()));
+    setDeckOfCards(shuffle(difficulty));
   }
 
   return {
@@ -74,7 +76,8 @@ const useGame = () => {
     handleSelectCard,
     selectedCards,
     deckOfCards,
-    setDeckOfCards
+    setDeckOfCards,
+    setDifficulty
   };
 };
 

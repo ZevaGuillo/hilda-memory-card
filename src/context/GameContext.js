@@ -4,7 +4,7 @@ import { useGame } from "../hooks/useGame";
 const GameContext = createContext({});
 
 export function GameContextProvider({ children }) {
-  const { state, isWin, isGameOver, handleSelectCard, deckOfCards } = useGame();
+  const { state, isWin, isGameOver, handleSelectCard, deckOfCards, setDifficulty } = useGame();
 
   return (
     <GameContext.Provider value={{
@@ -12,7 +12,8 @@ export function GameContextProvider({ children }) {
         isWin,
         isGameOver,
         handleSelectCard,
-        deckOfCards
+        deckOfCards,
+        setDifficulty
     }}>
         {children}
     </GameContext.Provider>

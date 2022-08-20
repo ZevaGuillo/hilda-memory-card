@@ -1,0 +1,14 @@
+.name-logo{
+    width: 50%;
+    user-select: none;
+    & h2{
+        text-align: center;
+        color: #cc4242;
+        font-size: 4rem;
+        font-weight: 200;
+       
+    }
+    & img{
+        width: 100%;
+    }
+}

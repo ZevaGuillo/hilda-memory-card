@@ -21,7 +21,7 @@
         content: '';
         width: 100%;
         height: 100%;
-        background-color: rgba(51, 51, 51, 0.212);
+        background-color: rgba(51, 51, 51, 0.222);
         backdrop-filter: blur(.3rem);
         position: absolute;
         z-index: -1;
@@ -32,3 +32,15 @@
     z-index: 1;
 }
 
+.start-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.difficulty{
+    display: flex;
+    gap: 1rem;
+}

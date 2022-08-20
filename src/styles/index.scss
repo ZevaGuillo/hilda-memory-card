@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
+
 @font-face {
   font-family: 'Pacifico';
   font-style: normal;
@@ -18,9 +20,12 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Potta One', cursive;
+
+
+  // font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  //   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  //   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -1,5 +1,5 @@
 import { useEffect, useReducer, useState } from "react";
-import { characters, getCharactersDifficulty, isAllClicked, resectCharactes } from "../services/loadImages";
+import { getCharactersDifficulty, resectCharactes } from "../services/loadImages";
 import shuffle from "../utils/shuffle";
 const initialState = {
   score: 0,

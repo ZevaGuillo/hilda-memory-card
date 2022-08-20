@@ -1,4 +1,5 @@
-import "./SCSS/App.scss";
+import "./styles/App.scss";
+import backgroundMP4 from "./assets/images/short.mp4";
 import StartPage from "./pages/StartPage";
 import { useState } from "react";
 import GamePage from "./pages/GamePage";
@@ -13,13 +14,20 @@ function App() {
 
   return (
     <div className="App">
-      <GameContextProvider>
-        {!isStarted ? (
-          <StartPage handleStartGame={handleStartGame} />
-        ) : (
-          <GamePage />
-        )}
-      </GameContextProvider>
+      <div className="video">
+        <video autoPlay muted loop className="back-video">
+          <source src={backgroundMP4} type="video/mp4" />
+        </video>
+      </div>
+      <div className="content-main">
+        <GameContextProvider>
+          {!isStarted ? (
+            <StartPage handleStartGame={handleStartGame} />
+          ) : (
+            <GamePage />
+          )}
+        </GameContextProvider>
+      </div>
     </div>
   );
 }

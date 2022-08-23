@@ -1,3 +1,11 @@
 .cards-container{
+    position: relative;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 1200px;
+    z-index: 1;
+
 }

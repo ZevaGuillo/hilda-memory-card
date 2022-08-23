@@ -1,5 +1,6 @@
 import React from 'react'
-import Card from '../Card'
+import Card from '../Card';
+import Tilt from 'react-parallax-tilt';
 import './cardlist.scss';
 
 function CardList({cards}) {
@@ -7,8 +8,11 @@ function CardList({cards}) {
     <div className='cards-container'>
         {
             // TODO: Crear context para los estados.
-            
-            cards.map( c => <Card character={c} key={c.id} />)
+            cards.map( c => (
+              <Tilt  glareEnable={true} glareMaxOpacity={0.8} glareColor="#ffffff" glarePosition="bottom" glareBorderRadius="20px">
+                <Card character={c} key={c.id}/>
+              </Tilt>
+            ))
         }
     </div>
   )

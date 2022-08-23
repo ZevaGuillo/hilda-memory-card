@@ -10,7 +10,7 @@ const getDifficulty = (difficulty) => {
             LengthCards = 4;
         break;
         case 'hard':
-            LengthCards = 6;
+            LengthCards = 5;
         break;
         default:
             break;

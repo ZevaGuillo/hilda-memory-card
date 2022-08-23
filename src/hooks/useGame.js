@@ -34,9 +34,11 @@ const useGame = () => {
   const [isWin, setIsWin] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [difficulty, setDifficulty] = useState('easy');
+  const [maxScore, setMaxScore] = useState(0);
 
   useEffect(()=>{
     setDeckOfCards(shuffle(difficulty));
+    setMaxScore(getCharactersDifficulty(difficulty).length);
   },[difficulty]);
 
   useEffect(()=>{
@@ -77,7 +79,8 @@ const useGame = () => {
     selectedCards,
     deckOfCards,
     setDeckOfCards,
-    setDifficulty
+    setDifficulty,
+    maxScore
   };
 };
 

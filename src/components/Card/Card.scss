@@ -1,4 +1,5 @@
 .card{
+    user-select: none;
     position: relative;
     width: 220px;
     height: 340px;
@@ -15,14 +16,7 @@
     
     & .card-content{
         text-align: center;
-        transform: translateY(100px);
-        opacity: 0;
         transition: 0.5s;
-    }
-
-    &:hover .card-content{
-        transform: translateY(0px);
-        opacity: 1;
     }
 
     & img{

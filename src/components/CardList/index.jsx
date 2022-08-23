@@ -9,11 +9,12 @@ function CardList({cards}) {
         {
             // TODO: Crear context para los estados.
             cards.map( c => (
-              <Tilt  glareEnable={true} glareMaxOpacity={0.8} glareColor="#ffffff" glarePosition="bottom" glareBorderRadius="20px">
-                <Card character={c} key={c.id}/>
+              <Tilt key={c.id} glareEnable={true} glareMaxOpacity={0.8} glareColor="#ffffff" glarePosition="bottom" glareBorderRadius="20px">
+                <Card character={c}/>
               </Tilt>
             ))
         }
+        
     </div>
   )
 }

@@ -1,0 +1,23 @@
+@mixin modal-content{
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & span{
+        font-size: 1.2em;
+        color: salmon;
+        text-transform:uppercase;
+    }
+
+    & .image{
+        width: 50%;
+        max-width: 20rem;
+    }
+    & .image img{
+        width: 100%;
+    }
+}

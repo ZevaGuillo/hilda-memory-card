@@ -58,6 +58,10 @@
     }
     & .header .logo{
         width: 200px;
+        transition: .5s all ease-in-out;
+        &:hover{
+            transform: scale(1.03);
+        }
         & img{
             width: 100%;
         }

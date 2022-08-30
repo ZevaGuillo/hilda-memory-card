@@ -1,0 +1,27 @@
+@import  '../../styles/mixin.scss';
+
+.win-content{
+    @include modal-content;
+}
+
+.message{
+    position: absolute;
+    top: 30%;
+    left: 42%;
+    padding: 2rem;
+    background-color: bisque;
+    border-radius: 1rem;
+    box-shadow: 10px 10px 40px rgba(0,0,0, .3);
+
+    &::before{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: skewX(-30deg) rotate(360deg);
+        border-radius: 2px;
+        width: 35px;
+        height: 35px;
+        background-color: bisque;
+    }
+}

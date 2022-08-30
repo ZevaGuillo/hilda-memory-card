@@ -70,6 +70,11 @@ const useGame = () => {
     setDeckOfCards(shuffle(difficulty));
   }
 
+  function resetGame(){
+    setIsWin(false);
+    setIsGameOver(false);
+  }
+
   return {
     state,
     dispatch,
@@ -80,7 +85,8 @@ const useGame = () => {
     deckOfCards,
     setDeckOfCards,
     setDifficulty,
-    maxScore
+    maxScore,
+    resetGame
   };
 };
 

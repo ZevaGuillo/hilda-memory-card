@@ -3,15 +3,25 @@ import CardList from "../components/CardList";
 import Score from "../components/Score";
 import GameContext from "../context/GameContext";
 import hildaLogo from "../assets/images/HildaLogo.webp";
+import Modal from "../components/Modal";
+import Win from "../components/Win";
+import GameOver from "../components/GameOver";
 
-function GamePage() {
-  const { isWin, isGameOver, deckOfCards, maxScore, selectedCards } =
-    useContext(GameContext);
+function GamePage({started}) {
+  const { isWin, isGameOver, deckOfCards, maxScore, selectedCards } = useContext(GameContext);
+
+  const viewModal = ()=>{
+    if(isWin){
+      return <Modal open={true} content={<Win/>}/>
+    }else if (isGameOver){
+      return <Modal open={true} content={<GameOver/>}/>
+    }
+  }
 
   return (
     <div className="game-page">
       <div className="header">
-        <div className="logo">
+        <div className="logo" onClick={()=>started(false)}>
           <img src={hildaLogo} alt="logo" />
         </div>
         <Score />
@@ -25,13 +35,7 @@ function GamePage() {
       </div>
 
       <div>
-        {isWin ? (
-          <h1>wIN</h1>
-        ) : isGameOver ? (
-          <h1>Game over</h1>
-        ) : (
-          <h1>The game</h1>
-        )}
+        {viewModal()}
       </div>
     </div>
   );

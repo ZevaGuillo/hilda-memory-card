@@ -8,6 +8,8 @@ import { GameContextProvider } from "./context/GameContext";
 function App() {
   const [isStarted, setIsStarted] = useState(false);
 
+
+
   function handleStartGame() {
     setIsStarted(true);
   }
@@ -24,7 +26,7 @@ function App() {
           {!isStarted ? (
             <StartPage handleStartGame={handleStartGame} />
           ) : (
-            <GamePage />
+            <GamePage started={setIsStarted} />
           )}
         </GameContextProvider>
       </div>

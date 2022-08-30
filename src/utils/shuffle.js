@@ -33,7 +33,7 @@ function shuffle(difficulty) {
   // console.log('allclickedFuncion',allClicked )
 
   if(!allClickedNewArr && !allClicked){
-    let indexRandom = Math.floor(Math.random() * 3);
+    let indexRandom = Math.floor(Math.random() * length);
     let filterCharacters = list.filter(c => c.clicked === false );
     try {
       console.log(...newArr,'ff')

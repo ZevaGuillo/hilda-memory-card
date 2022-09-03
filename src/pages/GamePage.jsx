@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { motion } from "framer-motion";
 import CardList from "../components/CardList";
 import Score from "../components/Score";
 import GameContext from "../context/GameContext";
@@ -7,36 +8,55 @@ import Modal from "../components/Modal";
 import Win from "../components/Win";
 import GameOver from "../components/GameOver";
 
-function GamePage({started}) {
-  const { isWin, isGameOver, deckOfCards, maxScore, selectedCards } = useContext(GameContext);
+function GamePage({ started }) {
+  const { isWin, isGameOver, deckOfCards, maxScore, selectedCards } =
+    useContext(GameContext);
 
-  const viewModal = ()=>{
-    if(isWin){
-      return <Modal open={true} content={<Win/>}/>
-    }else if (isGameOver){
-      return <Modal open={true} content={<GameOver/>}/>
+  const viewModal = () => {
+    if (isWin) {
+      return <Modal open={true} content={<Win />} />;
+    } else if (isGameOver) {
+      return <Modal open={true} content={<GameOver />} />;
     }
-  }
+  };
 
   return (
     <div className="game-page">
       <div className="header">
-        <div className="logo" onClick={()=>started(false)}>
+        <motion.div
+          initial={{opacity: 0 }}
+          animate={{opacity: 1 }}
+          transition={{
+            ease: "easeInOut",
+            duration: 0.5,
+            type: "spring",
+            damping: 20,
+          }}
+          className="logo"
+          onClick={() => started(false)}
+        >
           <img src={hildaLogo} alt="logo" />
-        </div>
+        </motion.div>
         <Score />
       </div>
 
-      <div className="game-cards">
+      <motion.div
+        initial={{ scale: 0, x: -50, opacity: 0 }}
+        animate={{ x: 0, scale: 1, opacity: 1 }}
+        transition={{
+          duration: 0.2,
+          type: "spring",
+          damping: 20,
+        }}
+        className="game-cards"
+      >
         <CardList cards={deckOfCards} />
         <p>
           {selectedCards.length}/{maxScore}
         </p>
-      </div>
+      </motion.div>
 
-      <div>
-        {viewModal()}
-      </div>
+      <div>{viewModal()}</div>
     </div>
   );
 }

@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import GameContext from "../../context/GameContext";
 import Button from "../Button";
 import background from "../../assets/images/background.jpg";
 import "./modal.scss";
+import { motion } from "framer-motion";
 
 function Modal({ open, content }) {
   const { resetGame } = useContext(GameContext);
@@ -11,7 +12,15 @@ function Modal({ open, content }) {
 
   return (
     <div className="modal-container">
-      <div
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          ease: "easeInOut",
+          duration: 0.05,
+          type: "spring",
+          damping: 20,
+        }}
         className="modal"
         style={{
           backgroundImage: `url(${background})`,
@@ -19,7 +28,7 @@ function Modal({ open, content }) {
       >
         {content}
         <Button onclick={resetGame}>Restart</Button>
-      </div>
+      </motion.div>
     </div>
   );
 }

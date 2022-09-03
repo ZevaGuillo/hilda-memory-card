@@ -1,15 +1,22 @@
 import "./styles/App.scss";
 import backgroundMP4 from "./assets/images/short.mp4";
 import StartPage from "./pages/StartPage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GamePage from "./pages/GamePage";
 import { GameContextProvider } from "./context/GameContext";
 import InfoGame from "./components/InfoGame";
+import Loading from "./components/Loading";
 
 function App() {
   const [isStarted, setIsStarted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
 
   function handleStartGame() {
     setIsStarted(true);
@@ -22,19 +29,23 @@ function App() {
           <source src={backgroundMP4} type="video/mp4" />
         </video>
       </div>
-      <div className="content-main">
-        <GameContextProvider>
-          {!isStarted ? (
-            <StartPage handleStartGame={handleStartGame} />
-          ) : (
-            <GamePage started={setIsStarted} />
-          )}
-        </GameContextProvider>
 
-        {/* info */}
-        <InfoGame/>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className="content-main">
+          <GameContextProvider>
+            {!isStarted ? (
+              <StartPage handleStartGame={handleStartGame} />
+            ) : (
+              <GamePage started={setIsStarted} />
+            )}
+          </GameContextProvider>
 
-      </div>
+          {/* info */}
+          <InfoGame />
+        </div>
+      )}
     </div>
   );
 }

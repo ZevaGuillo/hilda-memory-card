@@ -10,10 +10,11 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .modal {
-    background: #fff;
+    background: salmon;
     padding: 1rem;
     width: 50%;
     height: auto;
@@ -22,4 +23,6 @@
     position: relative;
     transition: transform 1s;
     border-radius: 1rem;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

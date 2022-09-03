@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import GameContext from "../../context/GameContext";
 import Button from "../Button";
+import background from "../../assets/images/background.jpg";
 import "./modal.scss";
 
 function Modal({ open, content }) {
@@ -10,11 +11,14 @@ function Modal({ open, content }) {
 
   return (
     <div className="modal-container">
-      <div className="modal">
+      <div
+        className="modal"
+        style={{
+          backgroundImage: `url(${background})`,
+        }}
+      >
         {content}
-        <Button onclick={resetGame}>
-            Restart
-        </Button>
+        <Button onclick={resetGame}>Restart</Button>
       </div>
     </div>
   );

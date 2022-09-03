@@ -1,4 +1,4 @@
-@mixin modal-content{
+@mixin modal-content($texto){
     width: 100%;
     text-align: center;
     font-size: 2rem;
@@ -9,8 +9,18 @@
 
     & span{
         font-size: 1.2em;
-        color: salmon;
+        color: bisque;
         text-transform:uppercase;
+        
+        &::before{
+            content: $texto;
+            position: absolute;
+            filter: blur(2px);
+            transition: .5s all ease-in-out;
+        }
+        &:hover::before{
+            filter: blur(10px);
+        }
     }
 
     & .image{

@@ -4,6 +4,7 @@ import StartPage from "./pages/StartPage";
 import { useState } from "react";
 import GamePage from "./pages/GamePage";
 import { GameContextProvider } from "./context/GameContext";
+import InfoGame from "./components/InfoGame";
 
 function App() {
   const [isStarted, setIsStarted] = useState(false);
@@ -29,6 +30,10 @@ function App() {
             <GamePage started={setIsStarted} />
           )}
         </GameContextProvider>
+
+        {/* info */}
+        <InfoGame/>
+
       </div>
     </div>
   );

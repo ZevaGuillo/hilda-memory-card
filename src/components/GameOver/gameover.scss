@@ -1,6 +1,6 @@
 @import  '../../styles/mixin.scss';
 
 .gameOver-content{
-    @include modal-content;
+    @include modal-content('Game Over');
  
 }

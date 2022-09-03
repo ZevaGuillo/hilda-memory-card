@@ -1,0 +1,46 @@
+.info {
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.message-info {
+    display: flex;
+    max-height: 100px;
+
+    & div {
+        height: 70%;
+        padding: .5rem;
+        position: relative;
+        background-color: bisque;
+        border-radius: 1rem;
+        box-shadow: 10px 10px 40px rgba(0, 0, 0, .3);
+        z-index: 1;
+        &::before {
+            content: '';
+            z-index: -1;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            transform: skewX(30deg) rotate(360deg);
+            border-radius: 2px;
+            width: 35px;
+            height: 20px;
+            background-color: bisque;
+        }
+    }
+
+    & img {
+        height: 150px;
+    }
+}
+
+.info-button {
+    border-radius: 50%;
+    min-width: auto;
+    width: 50px;
+    height: 50px;
+    ;
+}

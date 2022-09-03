@@ -42,9 +42,7 @@ const useGame = () => {
   },[difficulty]);
 
   useEffect(()=>{
-    dispatch({type:'RESTART'})
-    setSelectedCards([]);
-    resectCharactes();
+    resetGameState()
   }, [isWin,isGameOver])
 
   useEffect(()=>{
@@ -75,6 +73,12 @@ const useGame = () => {
     setIsGameOver(false);
   }
 
+  function resetGameState(){
+    dispatch({type:'RESTART'})
+    setSelectedCards([]);
+    resectCharactes();
+  }
+
   return {
     state,
     dispatch,
@@ -86,7 +90,8 @@ const useGame = () => {
     setDeckOfCards,
     setDifficulty,
     maxScore,
-    resetGame
+    resetGame,
+    resetGameState
   };
 };
 

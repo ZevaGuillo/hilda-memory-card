@@ -1,29 +1,74 @@
-.card{
-    user-select: none;
-    position: relative;
+// .card{
+//     user-select: none;
+//     position: relative;
+//     width: 220px;
+//     height: 340px;
+//     box-shadow: 20px 20px 50px rgba(0,0,0, .5);
+//     border-radius: 15px;
+//     background: rgba(255, 255, 255, .1);
+//     overflow: hidden;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     flex-direction: column;
+//     border-top: 1px solid rgba(255, 255, 255, .5);
+//     border-left: 1px solid rgba(255, 255, 255, .5);
+
+//     & .card-content{
+//         text-align: center;
+//         transition: 0.5s;
+//     }
+
+//     & img{
+//         width: 100%;
+//     }
+
+//     &:hover{
+//         border: 2px solid brown;
+//     }
+// }
+
+.card {
     width: 220px;
     height: 340px;
-    box-shadow: 20px 20px 50px rgba(0,0,0, .5);
-    border-radius: 15px;
-    background: rgba(255, 255, 255, .1);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border-top: 1px solid rgba(255, 255, 255, .5);
-    border-left: 1px solid rgba(255, 255, 255, .5);
-    
-    & .card-content{
-        text-align: center;
-        transition: 0.5s;
-    }
+    perspective: 1000px;
+}
 
+.card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+
+    &.is-flipped {
+        transform: rotateY(180deg);
+    }
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
     & img{
         width: 100%;
     }
+}
 
-    &:hover{
-        border: 2px solid brown;
-    }
+.card-face-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-face-back {
+    background-color: bisque;
+    transform: rotateY(180deg);
 }

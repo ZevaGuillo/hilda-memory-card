@@ -14,6 +14,7 @@ export function GameContextProvider({ children }) {
     setDifficulty,
     maxScore,
     resetGame,
+    resetGameState
   } = useGame();
 
   return (
@@ -28,6 +29,7 @@ export function GameContextProvider({ children }) {
         setDifficulty,
         maxScore,
         resetGame,
+        resetGameState
       }}
     >
       {children}

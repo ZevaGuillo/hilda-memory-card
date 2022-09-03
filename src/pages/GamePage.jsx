@@ -9,7 +9,7 @@ import Win from "../components/Win";
 import GameOver from "../components/GameOver";
 
 function GamePage({ started }) {
-  const { isWin, isGameOver, deckOfCards, maxScore, selectedCards } =
+  const { isWin, isGameOver, deckOfCards, maxScore, selectedCards, resetGameState } =
     useContext(GameContext);
 
   const viewModal = () => {
@@ -24,8 +24,8 @@ function GamePage({ started }) {
     <div className="game-page">
       <div className="header">
         <motion.div
-          initial={{opacity: 0 }}
-          animate={{opacity: 1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{
             ease: "easeInOut",
             duration: 0.5,
@@ -33,7 +33,10 @@ function GamePage({ started }) {
             damping: 20,
           }}
           className="logo"
-          onClick={() => started(false)}
+          onClick={() => {
+            resetGameState();
+            started(false);
+          }}
         >
           <img src={hildaLogo} alt="logo" />
         </motion.div>

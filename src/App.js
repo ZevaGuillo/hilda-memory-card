@@ -1,4 +1,6 @@
+
 import "./styles/App.scss";
+
 import backgroundMP4 from "./assets/images/short.mp4";
 import StartPage from "./pages/StartPage";
 import { useEffect, useState } from "react";
@@ -6,6 +8,7 @@ import GamePage from "./pages/GamePage";
 import { GameContextProvider } from "./context/GameContext";
 import InfoGame from "./components/InfoGame";
 import Loading from "./components/Loading";
+import SoundPlay from "./components/SoundPlay";
 
 function App() {
   const [isStarted, setIsStarted] = useState(false);
@@ -24,6 +27,8 @@ function App() {
 
   return (
     <div className="App">
+      
+
       <div className="video">
         <video autoPlay muted loop className="back-video">
           <source src={backgroundMP4} type="video/mp4" />
@@ -44,6 +49,8 @@ function App() {
 
           {/* info */}
           <InfoGame />
+          {/* info */}
+          <SoundPlay />
         </div>
       )}
     </div>

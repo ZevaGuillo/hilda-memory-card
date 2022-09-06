@@ -1,37 +1,8 @@
-// .card{
-//     user-select: none;
-//     position: relative;
-//     width: 220px;
-//     height: 340px;
-//     box-shadow: 20px 20px 50px rgba(0,0,0, .5);
-//     border-radius: 15px;
-//     background: rgba(255, 255, 255, .1);
-//     overflow: hidden;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     flex-direction: column;
-//     border-top: 1px solid rgba(255, 255, 255, .5);
-//     border-left: 1px solid rgba(255, 255, 255, .5);
-
-//     & .card-content{
-//         text-align: center;
-//         transition: 0.5s;
-//     }
-
-//     & img{
-//         width: 100%;
-//     }
-
-//     &:hover{
-//         border: 2px solid brown;
-//     }
-// }
-
 .card {
     width: 220px;
     height: 340px;
     perspective: 1000px;
+
 }
 
 .card-inner {
@@ -56,8 +27,18 @@
     overflow: hidden;
     border-radius: 16px;
     box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
-    & img{
+    padding: .5rem;
+    background: rgba(0, 0, 0, .7) url('../../assets/images/backgroundCard.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-blend-mode: darken;
+    color: rgb(223, 208, 190);
+    & img {
+        border-radius: 16px;
         width: 100%;
+        object-fit: cover;
     }
 }
 
@@ -69,6 +50,31 @@
 }
 
 .card-face-back {
-    background-color: bisque;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    color: rgb(223, 208, 190);
     transform: rotateY(180deg);
+    background: rgba(0, 0, 0, .5) url('../../assets/images/backgroundCard.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-blend-mode: darken;
+}
+
+@media (max-width: 1400px) {
+    .card {
+        width: 200px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 100px;
+        height: 180px;
+    }
 }

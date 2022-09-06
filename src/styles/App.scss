@@ -3,20 +3,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .back-video {
     position: fixed;
-    z-index: -2; 
+    z-index: -2;
 }
 
-.video{
+.video {
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    &::before{
+
+    &::before {
         display: inline-block;
         content: '';
         width: 100%;
@@ -28,11 +30,11 @@
     }
 }
 
-.content-main{
+.content-main {
     z-index: 1;
 }
 
-.start-page{
+.start-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,15 +42,15 @@
     gap: 1rem;
 }
 
-.game-page{
+.game-page {
     min-height: 100vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 
-    & .header{
+    & .header {
         user-select: none;
         width: 100%;
         height: 100px;
@@ -56,18 +58,21 @@
         display: flex;
         justify-content: space-between;
     }
-    & .header .logo{
+
+    & .header .logo {
         width: 200px;
         transition: .5s all ease-in-out;
-        &:hover{
+
+        &:hover {
             transform: scale(1.03);
         }
-        & img{
+
+        & img {
             width: 100%;
         }
     }
 
-    & .game-cards{
+    & .game-cards {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -76,7 +81,37 @@
     }
 }
 
-.difficulty{
+.difficulty {
     display: flex;
     gap: 1rem;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .back-video {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    .back-video {
+        width: auto;
+        height: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .difficulty {
+        display: flex;
+        flex-direction: column;
+    }
+    .App {
+        padding: 1rem;
+    }
+    .game-page{
+        & .header .logo {
+            width: 100px;
+            align-self: center;
+        }
+    }
 }

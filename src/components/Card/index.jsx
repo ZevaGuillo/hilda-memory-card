@@ -1,11 +1,16 @@
 import { useContext } from "react";
+import ReactHowler from "react-howler";
 import GameContext from "../../context/GameContext";
-
 import "./Card.scss";
+import backsound from "../../assets/sounds/flipcard.mp3";
+import { useState } from "react";
+
 function Card({ character, isFlipped, setIsFlipped }) {
   const { handleSelectCard } = useContext(GameContext);
+  const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = async () => {
+    setIsClicked(true);
     setIsFlipped(true);
 
     setTimeout(() => {
@@ -14,13 +19,18 @@ function Card({ character, isFlipped, setIsFlipped }) {
         setIsFlipped(false);
       }, 500);
     }, 500);
-
   };
 
   let innerClass = isFlipped ? "card-inner is-flipped" : "card-inner";
 
   return (
     <div className="card" onClick={handleClick}>
+      <ReactHowler
+        src={backsound}
+        preload={false}
+        playing={isClicked}
+        volume={0.2}
+      />
       <div className={innerClass}>
         <div className="card-face card-face-front">
           <img
@@ -34,7 +44,7 @@ function Card({ character, isFlipped, setIsFlipped }) {
           </div>
         </div>
         <div className="card-face card-face-back">
-          <h2>card back</h2>
+          <h2>Hilda Memory Game</h2>
         </div>
       </div>
     </div>

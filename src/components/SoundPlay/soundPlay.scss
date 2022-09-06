@@ -1,0 +1,15 @@
+.sound{
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;;
+    & .sound-button{
+        color: indianred;
+        background-color: #F0C388;
+        box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #977b56 0 -3px 0 inset;
+    }
+    & .sound-button:active {
+        box-shadow: #977b56 0 3px 7px inset;
+    }
+}

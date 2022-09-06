@@ -17,7 +17,7 @@
     background: salmon;
     padding: 1rem;
     width: 50%;
-    height: auto;
+    min-height: 30rem;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -25,4 +25,12 @@
     border-radius: 1rem;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+
+@media (max-width: 768px) {
+    .modal{
+        width: 90%;
+        max-height: 70%;
+    }
 }

@@ -1,14 +1,26 @@
-.name-logo{
+.name-logo {
     width: 50%;
     user-select: none;
-    & h2{
+
+    & h2 {
         text-align: center;
         color: #cc4242;
         font-size: 4rem;
         font-weight: 200;
-       
+
     }
-    & img{
+
+    & img {
         width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .name-logo {
+        width: 70%;
+
+        & h2 {
+            font-size: 3rem;
+        }
     }
 }
